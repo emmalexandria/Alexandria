@@ -1,4 +1,4 @@
-{{- with resources.Get "css/main.css" | postCSS }}
+{{- with resources.Get "css/main.css" | postCSS (dict "config" "./assets/css/postcss.config.js") }}
   {{- if eq hugo.Environment "development" }}
     <link rel="stylesheet" href="{{ .RelPermalink }}">
   {{- else }}
@@ -8,6 +8,15 @@
   {{- end }}
 {{- end }}
 {{- with resources.Get "css/fonts.css"}}
+  {{- if eq hugo.Environment "development"}}
+    <link rel="stylesheet" href="{{.RelPermalink}}">
+  {{- else}}
+    {{- with . | minify | fingerprint}}
+      <link rel="stylesheet" href="{{.RelPermalink}}" integrity="{{.Data.Integrity}}" crossorigin="anonymous">
+    {{- end}}
+  {{- end}}
+{{- end}}
+{{- with resources.Get "css/syntax.css"}}
   {{- if eq hugo.Environment "development"}}
     <link rel="stylesheet" href="{{.RelPermalink}}">
   {{- else}}

@@ -3,3 +3,266 @@
 @tailwind utilities;
 
 
+@layer base {
+
+  .border-duotone {
+    @apply border-mono-200 dark:border-mono-500 shadow-md shadow-mono-300/50 dark:shadow-mono-600/50
+  }
+  .border-duotone-high {
+    @apply border-mono-200 dark:border-mono-500 shadow-lg shadow-mono-300/50 dark:shadow-mono-600/50
+  }
+  .border-duotone-hover {
+    @apply  border-duotone-high -translate-y-[0.05rem]
+  }
+
+  *::selection {
+    @apply bg-primary-500 text-mono-50 
+  }
+
+
+  @keyframes squigglevision {
+    0% {
+      filter: url("#squiggly-0");
+    }
+    5%{
+      filter: url("#squiggly-2");
+    }
+    10% {
+
+      filter: url("#squiggly-0");
+    }
+    15% {
+
+      filter: url("#squiggly-4");
+    }
+    20% {
+
+      filter: url("#squiggly-2");
+    }
+    25% {
+      filter: url("#squiggly-1");
+    }
+    30% {
+      filter: url("#squiggly-2");
+    }
+    35% {
+
+      filter: url("#squiggly-0");
+    }
+    40%{
+
+      filter: url("#squiggly-3");
+    }
+    45% {
+      filter: url("#squiggly-0");
+    }
+    50% {
+      filter: url("#squiggly-2");
+    }
+    55% {
+      filter: url("#squiggly-4");
+    }
+    60% {
+      filter: url("#squiggly-0");
+    }
+    65% {
+
+      filter: url("#squiggly-3");
+    }
+    70% {
+
+      filter: url("#squiggly-1");
+    }
+    75% {
+      filter: url("#squiggly-3");
+    }
+    80% {
+
+      filter: url("#squiggly-4");
+    }
+    85% {
+      filter: url("#squiggly-0");
+
+    }
+    90%{
+      filter: url("#squiggly-3");
+    }
+    95% {
+      filter: url("#squiggly-1");
+    }
+    100% {
+      filter: url("#squiggly-4");
+    }
+  }
+
+  .squiggle{
+    animation: squigglevision 4s alternate ease-in-out infinite;
+  }
+
+
+  #TableOfContents {
+    & {
+      @apply font-body
+    }
+
+    ol:not(:first-child) {
+      @apply pl-4 border-l border-dashed border-l-mono-300 dark:border-l-mono-800
+   
+    }
+
+    ol {
+      @apply list-decimal list-inside my-0 ;
+      @apply marker:font-bold
+    }
+
+    li {
+          @apply my-2 transition-all
+    }
+
+    
+
+    li:has(> a:hover) {
+      &::marker {
+      @apply text-primary-500
+      }
+       }
+
+    
+
+    ol ol {
+      @apply list-[lower-roman]
+    }
+
+    ol ol ol {
+      @apply list-[lower-latin]
+    }
+  }
+
+  article {
+    p {
+      @apply text-body
+    }
+
+    h2,h3,h4,h5,h6 {
+      &:hover {
+        @apply squiggle       }
+      
+      @apply mb-4 leading-tight font-bold font-display transition-all     }
+
+
+    h2 {
+    @apply text-4xl mt-8  
+  }
+
+    h3 {
+      @apply text-3xl mt-7
+    }
+
+    h4 {
+      @apply text-2xl mt-6
+    }
+
+    h5 {
+      @apply text-xl mt-5
+    }
+
+    h6 {
+      @apply text-lg mt-4
+    }
+
+    p {
+      @apply font-body mb-6
+    }
+
+    time {
+      @apply italic text-sm text-mono-600 dark:text-mono-400
+    }
+
+    
+    ul:not(#TableOfContents *):not(#PostTaxonomy *), ol:not(#TableOfContents *):not(#PostTaxonomy *) {
+      @apply mb-6 ml-8
+    }
+
+    ul ul, ol ol, ul ol, ol ul {
+      @apply mt-2 mb-2
+    }
+
+    li:not(#TableOfContents *):not(#PostTaxonomy, *) {
+      @apply mb-2
+    }
+
+    p + ul, p + ol {
+      @apply -mt-3
+    }
+
+    ul {
+      li {
+        @apply list-disc list-inside
+      }
+    }
+
+    pre {
+      &:hover {
+        @apply border-duotone-hover  
+      }
+      @apply rounded overflow-clip p-4 mb-6 border border-duotone overflow-x-auto font-mono text-mono transition-all dark:saturate-150
+    } 
+
+    code:not(pre *) {
+      @apply bg-mono-100 dark:bg-mono-900  rounded-sm font-mono text-mono px-1 py-[0.10rem]
+    }
+
+
+    hr { 
+      @apply border-t border-t-mono-300 dark:border-t-mono-800 my-8
+    }
+
+    a:not(.heading-link):not(#TableOfContents *):not(#PostTaxonomy *) {
+      &:hover, &:hover:visited {
+        @apply text-primary-600
+      }
+      &:visited {
+        @apply text-primary-700
+      }
+      @apply text-primary-500 underline underline-offset-2
+    }
+
+    @keyframes link-slide {
+      from {
+        transform: translate(0);
+      }
+      to {
+      transform:translate(32px)
+      }
+      
+    }
+
+    a.heading-link {
+      position: relative;
+      display: inline-block;
+      transition: transform 0.3s ease;
+      &:hover {
+        transform: translateX(1.5ch); 
+      }
+
+      &::before {
+        transition: opacity 0.3s ease;
+        opacity: 0;
+        width: 100%;
+        left: -0.5rem;
+        position: absolute;
+      }
+
+      
+
+      &:hover::before {
+        content: "#";
+        opacity: 1;
+        transform: translateX(-1ch);
+      }
+    }
+  }
+}
+
+
+

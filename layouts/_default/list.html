@@ -1,8 +1,12 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
+<div class="w-content mx-auto">
+
+  <h1 class="text-5xl font-bold font-display">{{ .Title }}</h1>
   {{ .Content }}
   {{ range .Pages }}
-    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-    {{ .Summary }}
+    <h2 class="text-3xl font-bold font-display"><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+    {{ .Description }}
   {{ end }}
+
+</div>
 {{ end }}

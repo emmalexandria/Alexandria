@@ -1,7 +1,10 @@
 {{ define "main" }}
+  <section class="h-full">  
   {{ .Content }}
   {{ range site.RegularPages }}
     <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
     {{ .Summary }}
   {{ end }}
+</section>
+
 {{ end }}

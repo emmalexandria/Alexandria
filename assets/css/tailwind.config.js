@@ -1,14 +1,25 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./layouts/**/*.html", "./content/**/*.{html,md}"],
+  darkMode: 'selector',
+  content: [
+    "./themes/**/layouts/**/*.html",
+    "./content/**/layouts/**/*.html",
+    "./layouts/**/*.html",
+    "./content/**/*.html"
+  ],
   theme: {
     extend: {
       fontFamily: {
         display: ["Vollkorn", "serif"],
-        body: ["'Exo 2'", "sans-serif"]
+        body: ["'Exo 2'", "sans-serif"],
+        mono: ["Overpass Mono", "monospaced"]
+      },
+      fontSize: {
+        body: ["1rem", { lineHeight: 1.6, letterSpacing: "0.02em" }],
+        mono: ["1rem", { lineHeight: 1.6, letterSpacing: "0.00em" }]
       },
       colors: {
-        'mono': {
+        mono: {
           '50': '#f6f6f6',
           '100': '#e7e7e7',
           '200': '#d1d1d1',
@@ -21,7 +32,7 @@ module.exports = {
           '900': '#3d3d3d',
           '950': '#262626',
         },
-        'primary': {
+        primary: {
           '50': '#fff8ed',
           '100': '#fef0d6',
           '200': '#fcddac',
@@ -34,9 +45,20 @@ module.exports = {
           '900': '#793515',
           '950': '#411909',
         },
-      }
+      },
+      spacing: {
+        content: '80ch'
+      },
+
     },
+    borderWidth: {
+      sm: '1px',
+      DEFAULT: '1.5px',
+      md: '1.5px',
+      lg: '2px'
+    }
   },
-  plugins: [require('@tailwindcss/typography')],
+
+  plugins: [],
 }
 

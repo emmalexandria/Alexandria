@@ -1,0 +1,26 @@
+{{ $altText := .Get "alt"}}
+{{ $caption := .Get "caption"}}
+{{ with $.Page.Resources.GetMatch (.Get "src") }}
+{{ $width2x := printf "%v%s" .Width "x webp"}}
+{{ $widthonehalfx := printf "%v%s" (int (div .Width 1.33)) "x webp"}}
+{{ $width1x := printf "%v%s" (div .Width 2) "x webp"}}
+{{ $widthhalfx := printf "%v%s" (div .Width 4) "x webp"}}
+
+{{ $width2x_desc := printf "%v%s" .Width "w"}}
+{{ $widthonehalfx_desc := printf "%v%s" (int (div .Width 1.33)) "w"}}
+{{ $width1x_desc := printf "%v%s" (div .Width 2) "w"}}
+{{ $widthhalfx_desc := printf "%v%s" (div .Width 4) "w"}}
+<figure>
+  <img srcset="
+  {{ (.Resize $width2x ).RelPermalink }} {{$width2x_desc}} , 
+  {{ (.Resize $widthonehalfx).RelPermalink}} {{$widthonehalfx_desc}},
+  {{ (.Resize $width1x).RelPermalink }} {{$width1x_desc}}, 
+  {{ (.Resize $widthhalfx).RelPermalink }} {{$widthhalfx_desc}}" src="{{$width2x}}.RelPermalink" alt="{{$caption}}"
+    width="{{.Width}}" height="{{.Height}}" />
+  {{if $caption }}
+  <figcaption>
+    <p>{{ $caption }}</p>
+  </figcaption>
+  {{end}}
+</figure>
+{{ end }}

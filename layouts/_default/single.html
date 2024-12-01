@@ -1,12 +1,52 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
+<article id="post-root" class="max-w-content font-body mx-auto">
+  <h1 class="text-5xl font-display font-bold squiggle">{{ .Title }}</h1>
 
   {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
   {{ $dateHuman := .Date | time.Format ":date_long" }}
   <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
 
-  <article class="prose">
+<div class=" py-2 ">
+  <h1 class="font-display text-2xl font-bold">Table of contents</h1>
+  <hr class="my-2">
+  <div class="px-2">
+  {{ .Page.TableOfContents }}
+  </div>
+</div>
+
+{{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
+
+  <hr>
+
   {{ .Content }}
 </article>
-  {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
+
+<script>
+let root = document.querySelector("#post-root");
+
+const headings = root.querySelectorAll('h2, h3, h4, h5, h6');
+
+    headings.forEach((heading) => {
+        const id = heading.id;
+        if (!id) {
+            console.warn(`Heading "${heading.outerHTML}" does not have an id. Skipping.`);
+            return;
+        }
+
+        // Create an <a> element
+        const anchor = document.createElement('a');
+        anchor.href = `#${id}`;
+        anchor.classList.add('heading-link'); // Optional: add a class for styling
+
+        // Move the heading's content into the <a> element
+        while (heading.firstChild) {
+            anchor.appendChild(heading.firstChild);
+        }
+
+        // Append the <a> element back into the heading
+        heading.appendChild(anchor);
+    });
+
+</script>
+
 {{ end }}
