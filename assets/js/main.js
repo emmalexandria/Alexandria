@@ -2,7 +2,7 @@ import { build_headings } from './headings';
 import Swup from "swup";
 import "./animations.js";
 import { createIcons, icons } from "lucide";
-
+import "./three.js"
 
 let swup = new Swup();
 

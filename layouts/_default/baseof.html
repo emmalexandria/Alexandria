@@ -4,6 +4,7 @@
   {{ partial "head.html" . }}
 </head>
 <body id="swup"  class="font-body flex flex-col scroll-smooth w-full h-full bg-mono-50 text-mono-950 dark:bg-mono-950 dark:text-mono-50">
+<canvas id="threejs-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;"></canvas>
   <header class="w-full p-4">
     {{ partial "header.html" . }}
   </header>
