@@ -10,4 +10,11 @@
     {{- end }}
   {{- end }}
 {{- end }}
+{{- with resources.Get "js/animejs/anime.min.js"}}
+  <script src="{{ .RelPermalink }}"></script>
+{{- end}}
+{{- with resources.Get "js/lucide/lucide.min.js"}}
+  <script src="{{ .RelPermalink }}"></script>
+{{- end}}
+
   

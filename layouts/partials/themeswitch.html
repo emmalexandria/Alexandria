@@ -1,10 +1,68 @@
-<input class="hidden" type="checkbox" id="darkToggle"/>
-<label for="darkToggle" class="hover:cursor-pointer font-serif text-xl">
-   <svg id="darkmode" width="100" height="100" viewBox="0 0 100 100" fill="none"
-            xmlns="http://www.w3.org/2000/svg">
-            <path class="sun"
-                d="M100 50C100 77.6142 77.6142 100 50 100C22.3858 100 0 77.6142 0 50C0 22.3858 22.3858 0 50 0C77.6142 0 100 22.3858 100 50Z"
-                fill="currentColor" />
-        </svg></label>
+<label  class="relative group hover:cursor-pointer font-serif text-xl w-6 h-6">
+  <input class="hidden"  type="checkbox" name="darkToggle" id="darkToggle"/>
+  <i data-lucide="moon" id="moonIcon" class="pointer-events-none w-full absolute text-mono-800 fill-transparent dark:text-mono-200 group-hover:fill-primary-300 group-hover:dark:fill-primary-900 transition-fill"></i>
+  <i data-lucide="circle" id="sunIcon" class="w-full absolute text-mono-800 fill-transparent dark:text-mono-200 group-hover:fill-primary-400 group-hover:dark:fill-primary-600 transition-fill"></i>
+</label>
+
+<script>
+const themeToggle = document.querySelector('#darkToggle');
+
+lucide.createIcons();
+
+const moonIcon = document.querySelector("#moonIcon");
+const sunIcon= document.querySelector("#sunIcon")
+
+if (localStorage.getItem("theme") != null) {
+  theme = localStorage.getItem("theme");
+} else {
+  if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    theme = "dark"
+    localStorage.setItem("theme", "dark")
+  } else {
+    theme = "light"
+    localStorage.setItem("theme", "light")
+  }
+}
+
+if (theme == "dark") {
+  document.documentElement.classList.add("dark");
+  themeToggle.checked = true
+  sunIcon.classList.remove("hidden")
+  moonIcon.classList.add("hidden")
+} else {
+  moonIcon.classList.remove("hidden")
+  sunIcon.classList.add("hidden")
+  themeToggle.checked = false
+}
+
+function from_checked(val) {
+  if(val) {
+    sunIcon.classList.remove("hidden")
+    moonIcon.classList.add("hidden")
+    document.documentElement.classList.add("dark")
+    localStorage.setItem("theme", "dark")
+
+  }
+  else {
+    moonIcon.classList.remove("hidden")
+    sunIcon.classList.add("hidden")
+    document.documentElement.classList.remove("dark")
+    localStorage.setItem("theme", "light")
+  }
+}
+
+themeToggle.addEventListener("click", (ev) => {
+  from_checked(ev.target.checked)  
+})
+
+
+
+
+
+
+
+</script>
+
+
 
 

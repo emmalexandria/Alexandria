@@ -23,15 +23,3 @@ authors = [
 [author]
 name = 'Your name'
 homepage = 'Your website'
-
-# If porting an existing theme
-[original]
-author = 'Name of original author'
-homepage = 'Website of original author'
-repo = 'https://github.com/owner/repo'
-
-[markup]
-[markup.highlight]
-noClasses = false
-tabWidth = 2
-lineNos = true

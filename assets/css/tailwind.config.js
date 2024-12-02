@@ -5,7 +5,8 @@ module.exports = {
     "./themes/**/layouts/**/*.html",
     "./content/**/layouts/**/*.html",
     "./layouts/**/*.html",
-    "./content/**/*.html"
+    "./content/**/*.html",
+    "./assets/js/**/*.js"
   ],
   theme: {
     extend: {
@@ -15,7 +16,7 @@ module.exports = {
         mono: ["Overpass Mono", "monospaced"]
       },
       fontSize: {
-        body: ["1rem", { lineHeight: 1.6, letterSpacing: "0.02em" }],
+        body: ["1rem", { lineHeight: 1.6, letterSpacing: "0.04em" }],
         mono: ["1rem", { lineHeight: 1.6, letterSpacing: "0.00em" }]
       },
       colors: {
@@ -58,7 +59,9 @@ module.exports = {
       lg: '2px'
     }
   },
-
   plugins: [],
+  safelist: [
+    { pattern: /primary-./ }
+  ]
 }
 

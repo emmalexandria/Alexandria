@@ -3,7 +3,17 @@
 @tailwind utilities;
 
 
+html.is-changing .transition-fade {   transition: opacity 0.25s;   opacity: 1; } /* Define the styles for the unloaded pages */ html.is-animating .transition-fade {   opacity: 0; } 
+
+
+.absimg {
+  @apply absolute gutter-size max-w-96 block overflow-hidden;
+}
+
 @layer base {
+  .gutter-size {
+     @apply text-body max-w-[calc(100vw-160ch)]
+  }
 
   .border-duotone {
     @apply border-mono-200 dark:border-mono-500 shadow-md shadow-mono-300/50 dark:shadow-mono-600/50
@@ -96,8 +106,10 @@
   }
 
   .squiggle{
-    animation: squigglevision 4s alternate ease-in-out infinite;
+    animation: squigglevision 8s alternate ease-in-out infinite;
   }
+
+  
 
 
   #TableOfContents {
@@ -107,7 +119,7 @@
 
     ol:not(:first-child) {
       @apply pl-4 border-l border-dashed border-l-mono-300 dark:border-l-mono-800
-   
+
     }
 
     ol {
@@ -116,18 +128,18 @@
     }
 
     li {
-          @apply my-2 transition-all
+      @apply my-2 transition-all
     }
 
-    
+
 
     li:has(> a:hover) {
       &::marker {
-      @apply text-primary-500
+        @apply text-primary-500
       }
-       }
+    }
 
-    
+
 
     ol ol {
       @apply list-[lower-roman]
@@ -139,20 +151,37 @@
   }
 
   article {
+      
+
+
+    p,ol,ul,pre,code {
+      @apply text-body max-w-content 
+    }
+
     p {
-      @apply text-body
+      @apply text-body max-w-content mx-auto
+    }
+
+    h1.title {
+      @apply text-5xl squiggle  leading-tight font-bold font-display
     }
 
     h2,h3,h4,h5,h6 {
       &:hover {
-        @apply squiggle       }
-      
-      @apply mb-4 leading-tight font-bold font-display transition-all     }
+      @apply squiggle       }
+
+    @apply mb-4 leading-tight font-bold font-display transition-all     }
+
+    &.heading-center {
+      h1,h2,h3,h4,h5,h6 {
+        text-align:center;
+      }
+    }
 
 
     h2 {
-    @apply text-4xl mt-8  
-  }
+      @apply text-4xl mt-8  
+    }
 
     h3 {
       @apply text-3xl mt-7
@@ -178,7 +207,7 @@
       @apply italic text-sm text-mono-600 dark:text-mono-400
     }
 
-    
+
     ul:not(#TableOfContents *):not(#PostTaxonomy *), ol:not(#TableOfContents *):not(#PostTaxonomy *) {
       @apply mb-6 ml-8
     }
@@ -232,37 +261,48 @@
         transform: translate(0);
       }
       to {
-      transform:translate(32px)
+        transform:translate(32px)
       }
-      
+
     }
 
-    a.heading-link {
+    a.heading-link{
+      svg {
+        opacity: 0%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-1em, -0.5em);
+        display: inline-block;
+        width: 0.8em;
+        height: 0.8em;
+        transition: opacity 0.3s linear;
+        @apply text-mono-700 dark:text-mono-300 
+      } 
+
+      &:hover {
+        svg {
+          opacity: 100%;
+          transform: translate(-1em, -0.5em);
+        }
+      }
+
       position: relative;
       display: inline-block;
-      transition: transform 0.3s ease;
-      &:hover {
-        transform: translateX(1.5ch); 
-      }
+    }
+  
 
-      &::before {
-        transition: opacity 0.3s ease;
-        opacity: 0;
-        width: 100%;
-        left: -0.5rem;
-        position: absolute;
-      }
 
-      
 
-      &:hover::before {
-        content: "#";
-        opacity: 1;
-        transform: translateX(-1ch);
-      }
+
+
+  &.fancy {
+    p + p {
+      @apply indent-6
     }
   }
 }
+}
+
 
 
 
