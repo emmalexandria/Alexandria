@@ -1,5 +1,5 @@
 {{ define "main" }}
-  <article class="fancy h-full w-content h-full mx-auto heading-center link-headings text-mono-950 dark:text-mono-50">  
+  <article class="relative fancy h-full w-content h-full mx-auto heading-center link-headings text-mono-950 dark:text-mono-50">  
   <div class="subtle-land-anime">
   <div class="max-w-32 mx-auto squiggle logo-draw">
     {{partial "logo.html"}}
@@ -8,15 +8,16 @@
   <h2 class="text-center squiggle text-2xl mt-0 text-mono-400 dark:text-mono-400">It wants to not suck.</h2>
   </div>
   {{ .Content }}
-  <span class="signature-draw">
+  <span class="text-mono-950 hover:squiggle signature-draw stroke-mono-950">
     {{partial "yourstruly.html"}}
   </span>
   <div class="block  text-mono-950  hover:squiggle signature-draw stroke-mono-950">
     {{partial "signature.html"}}
   </div> 
-    <p>Thank you for your time</p>
+    <p class="text-sm text-mono-500 m-0 italic">Emma Alexandria</p>
 
 </article>
+
 {{ end }}
 
 

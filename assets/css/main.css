@@ -106,7 +106,7 @@ html.is-changing .transition-fade {   transition: opacity 0.25s;   opacity: 1; }
   }
 
   .squiggle{
-    animation: squigglevision 8s alternate ease-in-out infinite;
+    animation: squigglevision 4s alternate ease-in-out infinite;
   }
 
   

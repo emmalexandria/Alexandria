@@ -608,7 +608,7 @@ video {
   }
 
   .squiggle{
-    animation: squigglevision 8s alternate ease-in-out infinite;
+    animation: squigglevision 4s alternate ease-in-out infinite;
   }
 
   
@@ -756,7 +756,7 @@ video {
 }
 
   article h1.title{
-    animation: squigglevision 8s alternate ease-in-out infinite;
+    animation: squigglevision 4s alternate ease-in-out infinite;
   }
 
   article h1.title {
@@ -777,7 +777,7 @@ video {
 }
 
   :is(article h2,article h3,article h4,article h5,article h6):hover{
-    animation: squigglevision 8s alternate ease-in-out infinite;
+    animation: squigglevision 4s alternate ease-in-out infinite;
   }
 
   article h2,article h3,article h4,article h5,article h6 {
@@ -1144,6 +1144,9 @@ video {
 .relative {
   position: relative;
 }
+.top-1\/2 {
+  top: 50%;
+}
 .m-0 {
   margin: 0px;
 }
@@ -1211,6 +1214,10 @@ video {
 }
 .grow {
   flex-grow: 1;
+}
+.rotate-45 {
+  --tw-rotate: 45deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -14235,6 +14242,9 @@ video {
 .font-display {
   font-family: Vollkorn, serif;
 }
+.font-mono {
+  font-family: Overpass Mono, monospaced;
+}
 .font-serif {
   font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 }
@@ -14258,15 +14268,33 @@ video {
   font-size: 1.25rem;
   line-height: 1.75rem;
 }
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+.font-black {
+  font-weight: 900;
+}
 .font-bold {
   font-weight: 700;
+}
+.italic {
+  font-style: italic;
 }
 .leading-none {
   line-height: 1;
 }
+.text-blue-700 {
+  --tw-text-opacity: 1;
+  color: rgb(29 78 216 / var(--tw-text-opacity, 1));
+}
 .text-mono-400 {
   --tw-text-opacity: 1;
   color: rgb(136 136 136 / var(--tw-text-opacity, 1));
+}
+.text-mono-500 {
+  --tw-text-opacity: 1;
+  color: rgb(109 109 109 / var(--tw-text-opacity, 1));
 }
 .text-mono-600 {
   --tw-text-opacity: 1;
@@ -21854,102 +21882,89 @@ html.is-changing .transition-fade {   transition: opacity 0.25s;   opacity: 1; }
   display: block;
   max-width: 24rem;
   overflow: hidden;
-} 
-
+}
 
 .hover\:squiggle:hover{
-    animation: squigglevision 8s alternate ease-in-out infinite;
-  } 
-
+    animation: squigglevision 4s alternate ease-in-out infinite;
+  }
 
 .before\:content-\[\'\#\'\]::before {
   --tw-content: '#';
   content: var(--tw-content);
-} 
-
+}
 
 .hover\:cursor-pointer:hover {
   cursor: pointer;
-} 
-
+}
 
 .hover\:underline:hover {
   text-decoration-line: underline;
-} 
-
+}
 
 .hover\:decoration-primary-500:hover {
   text-decoration-color: #f3841c;
-} 
-
+}
 
 .hover\:decoration-\[1\.5px\]:hover {
   text-decoration-thickness: 1.5px;
-} 
-
+}
 
 .hover\:underline-offset-2:hover {
   text-underline-offset: 2px;
-} 
-
+}
 
 .hover\:before\:text-primary-500:hover::before {
   content: var(--tw-content);
   --tw-text-opacity: 1;
   color: rgb(243 132 28 / var(--tw-text-opacity, 1));
-} 
-
+}
 
 .group:hover .group-hover\:fill-primary-300 {
   fill: #f9c478;
-} 
-
+}
 
 .group:hover .group-hover\:fill-primary-400 {
   fill: #f6a041;
-} 
-
+}
 
 .dark\:bg-mono-800:where(.dark, .dark *) {
   --tw-bg-opacity: 1;
   background-color: rgb(69 69 69 / var(--tw-bg-opacity, 1));
-} 
+}
 
+.dark\:bg-mono-900:where(.dark, .dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(61 61 61 / var(--tw-bg-opacity, 1));
+}
 
 .dark\:bg-mono-950:where(.dark, .dark *) {
   --tw-bg-opacity: 1;
   background-color: rgb(38 38 38 / var(--tw-bg-opacity, 1));
-} 
-
+}
 
 .dark\:text-mono-200:where(.dark, .dark *) {
   --tw-text-opacity: 1;
   color: rgb(209 209 209 / var(--tw-text-opacity, 1));
-} 
-
+}
 
 .dark\:text-mono-400:where(.dark, .dark *) {
   --tw-text-opacity: 1;
   color: rgb(136 136 136 / var(--tw-text-opacity, 1));
-} 
-
+}
 
 .dark\:text-mono-50:where(.dark, .dark *) {
   --tw-text-opacity: 1;
   color: rgb(246 246 246 / var(--tw-text-opacity, 1));
-} 
-
+}
 
 .dark\:text-mono-600:where(.dark, .dark *) {
   --tw-text-opacity: 1;
   color: rgb(93 93 93 / var(--tw-text-opacity, 1));
-} 
-
+}
 
 .group:hover .group-hover\:dark\:fill-primary-600:where(.dark, .dark *) {
   fill: #e46a12;
-} 
-
+}
 
 .group:hover .group-hover\:dark\:fill-primary-900:where(.dark, .dark *) {
   fill: #793515;

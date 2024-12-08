@@ -18,8 +18,9 @@ export function build_headings() {
     }
 
     // Create an <a> element
-    if (heading.parentElement != null && heading.parentElement.tagName == "a") {
-      if (heading.parentElement.href = `#${id}`) {
+    if (heading.parentElement != null && heading.parentElement.tagName == "A") {
+      let link = heading.parentElement as HTMLAnchorElement;
+      if (link.href = `#${id}`) {
         console.warn(`Heading "${heading.outerHTML}" already has an <a> parent with href = #${id}, skipping`);
         return;
       }
